@@ -1,0 +1,17 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true]
+	"Person" [shape=Mrecord, label="{Person|name :string\laddress :string\lusername :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Venue" [shape=Mrecord, label="{Venue|name :string\laddress :string\ldescription :text\lseatCapacity :integer\lindoor :boolean\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Team" [shape=Mrecord, label="{Team|id :integer\lname :string\lmanagerID :integer\lleagueID :integer\lvenueID :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Sport" [shape=Mrecord, label="{Sport|name :string\lconfigpath :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"TeamPlayer" [shape=Mrecord, label="{TeamPlayer|playerNumber :integer\lactive :integer\l}"]
+	"Game" [shape=Mrecord, label="{Game|date :date\lhomeScore :integer\lawayScore :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"League" [shape=Mrecord, label="{League|name :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"TeamCoach" [shape=Mrecord, label="{TeamCoach|coachTitle :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Person" -> "TeamPlayer" [arrowtail=crow, arrowhead=dot, dir=both]
+	"Person" -> "TeamCoach" [arrowtail=crow, arrowhead=dot, dir=both]
+	"Venue" -> "Game" [arrowtail=crow, arrowhead=dot, dir=both]
+	"Team" -> "TeamManager" [arrowtail=odot, arrowhead=dot, dir=both]
+	"Team" -> "League" [arrowtail=odot, arrowhead=dot, dir=both]
+	"Team" -> "Venue" [arrowtail=odot, arrowhead=dot, dir=both]
+}

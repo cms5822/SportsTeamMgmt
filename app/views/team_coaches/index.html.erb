@@ -1,0 +1,25 @@
+<h1>Sports Team Management Coaches</h1>
+
+<table border="1">
+  <tr>
+    <th align="center">Team</th>
+    <th align="center">Name</th>
+    <th align="center">Title</th>
+  </tr>
+
+<% @team_coaches = TeamCoach.all
+   @team_coaches.each do |team_coach| %>
+  <tr>
+  	<td align="center"><%=team_coach.team.name %></td>
+  	<td align="center"><%=team_coach.person.name %></td>
+  	<td align="center"><%=team_coach.coachTitle %></td>
+  
+    <td align="center"><%= link_to (image_tag 'edit.png', :height => '25'), edit_team_coach_path(team_coach) %></td>
+    <td align="center"><%= link_to (image_tag 'delete.png', :height => '25'), team_coach, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Team Coach', new_team_coach_path %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row-fluid"><div class="span3"><h5><%=	@venue.name %></h5></div></div>
+
+  <!--Games played at this venue -->
+<% if @venue.games.count > 0 %>
+    <div class="container-fluid">
+    <h6>Games at this Venue</h6
+      <div class="row-fluid"><div class="span1"> </div></div>
+      <ul>
+        <% for g in @venue.games  %>
+            <div class="row-fluid">
+            	<div class="span2">
+            		<li><b>Game Number:</b> <%= g.id %></li>
+            	</div>
+            	<div class="span2">
+            		<li><b>Home Team:</b> <%= g.home.name %></li>
+            		<li><b>Away Team:</b> <%= g.away.name %></li>
+            	</div>
+            </div>
+            <br />
+            <br />
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_venue_path(@venue) %> |
+<%= link_to 'Back', venues_path %>

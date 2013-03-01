@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+  <div class="row-fluid"><div class="span3"><h1><%= @person.name %></h1></div></div>
+  <div class="row-fluid"><div class="span3"><h4><%=mail_to @person.address,"send email" %></h4></div></div>
+
+<!--Leagues-->
+ <%	 if @person.leagues.count > 0 %>
+      <div class="container-fluid">
+        <div class="row-fluid"><div class="span1"><h6>owns</h6></div></div>
+        <ul>
+          <% for t in @person.leagues  %>
+              <div class="row-fluid"><div class="span2"><li><%= link_to t.name, t %></li></div></div>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+<!--Coaches-->
+<% if @person.team_coaches.count >0 %>
+    <div class="container-fluid">
+      <div class="row-fluid"><div class="span2"><h6>Coaches For</h6></div></div>
+      <ul>
+        <%	for tc in @person.team_coaches  %>
+            <div class="row-fluid"><div class="span2"><li><%= link_to tc.team.name, tc.team %></li></div></div>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<!--Coaches-->
+<% if @person.teams.count >0 %>
+    <div class="container-fluid">
+      <div class="row-fluid"><div class="span2"><h6>Manages</h6></div></div>
+      <ul>
+        <%	for t in @person.teams  %>
+            <div class="row-fluid"><div class="span2"><li><%= link_to t.name, t %></li></div></div>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<!--Plays-->
+<% if @person.team_players.count >0 %>
+    <div class="container-fluid">
+      <div class="row-fluid"><div class="span1"><h6>Plays On</h6></div></div>
+      <ul>
+        <%	for tp in @person.team_players  %>
+            <div class="row-fluid"><div class="span2"><li><%= link_to tp.team.name, tp.team %></li></div></div>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+
+
+	
+<div class=clear>
+
+</div>
+
+<div>
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
+</div>
+

@@ -1,0 +1,15 @@
+class Team < ActiveRecord::Base
+  
+  #attributes for Team
+  attr_accessible :name, :person_id, :league_id, :venue_id
+
+  #related tables
+  has_many :Person, :foreign_key => "person_id", :class_name => "Person"
+  belongs_to :League #, :foreign_key => "league_id", :class_name => "League"
+  belongs_to :Venue #, :foreign_key => "venue_id", :class_name => "Venue"
+
+  validates :manager_id, :presence => true, :length=>{:minimum => 1, :maximum => 30}
+  validates :league_id, :presence => true, :length=>{:minimum => 1, :maximum => 30}
+  validates :venue_id, :presence => true, :length=>{:minimum => 1, :maximum => 30}
+  validates :name, :presence => true, :length=>{:minimum => 1, :maximum => 30}
+end

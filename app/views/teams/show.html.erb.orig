@@ -1,0 +1,25 @@
+<div class="row-fluid"><div class="span3"><h1><%= @team.name %></h1></div></div>
+<div class="row-fluid"><div class="span3"><h4>League: <%= @team.league.name %></h4></div></div>
+<!--</div><br>-->
+<div class="row-fluid">
+  <div class="span3">Venue: <%= link_to @team.venue.name , @team.venue %></div>
+</div>
+<div class="row-fluid">
+  <div class="span3">Manager: <%= link_to @team.people.id , @team.venue %></div>
+</div>
+<div class="container-fluid">
+
+  <div class="row-fluid"><div class="span1"><h6>Players</h6></div></div>
+  <ul>
+    <%	for t in @team.people  %>
+        if t.id == @team
+
+        end
+        <div class="row-fluid"><div class="span2"><li><%= link_to t.name, t %></li></div></div>
+    <% end %>
+  </ul>
+
+</div>
+
+<%= link_to 'Edit', edit_league_path(@league) %> |
+<%= link_to 'Back', leagues_path %>

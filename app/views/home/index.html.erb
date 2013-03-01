@@ -1,0 +1,17 @@
+<h1>Sports Team Management Home Page </h1>
+<%= image_tag("MainBanner.png", :alt => "Sports Team Management System") %>
+
+
+<div id="homeMenu">
+	<h5>Current System Actions</h5>
+	<ul>
+		<li><%= link_to '<div class="buttonFiller">People</div>'.html_safe, people_path %></li>
+		<li><%= link_to '<div class="buttonFiller">Leagues</div>'.html_safe, leagues_path %></li>
+		<li><%= link_to '<div class="buttonFiller">Coaches</div>'.html_safe, team_coaches_path %></li>
+		<li><%= link_to '<div class="buttonFiller">Athletes</div>'.html_safe, team_players_path %></li>
+		<li><%= link_to '<div class="buttonFiller">Games</div>'.html_safe, games_path %></li>
+		<li><%= link_to '<div class="buttonFiller">Teams</div>'.html_safe, teams_path %></li>
+		<li><%= link_to '<div class="buttonFiller">Venues</div>'.html_safe, venues_path %></li>
+		<li><%= link_to '<div class="buttonFiller">Sports</div>'.html_safe, sports_path %></li>
+	</ul>
+</div>

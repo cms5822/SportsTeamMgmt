@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div class=following>
+<h3>Team Coaches</h3>
+
+<% @team_coach.each do |coach| %>
+	<div>
+		
+		<%= coach.label :Team %>
+		<%= coach.label :Person %>
+		<%= coach.label :coachTitle %>
+		
+	</div>
+<% end %>
+</div>
+
+<%= link_to 'Edit', edit_team_coach_path(@team_coach) %> |
+<%= link_to 'Back', team_coaches_path %>

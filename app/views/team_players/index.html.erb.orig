@@ -1,0 +1,48 @@
+<h1>Listing Team Players</h1>
+
+<table border="1">
+  <tr>
+    <th align="center">Name</th>
+    <th align="center">Team</th>
+    <th align="center">Player #</th>
+    <th align="center">Active</th>
+  </tr>
+  
+<%
+
+	Team.all.each do |team|
+		
+	%>
+	
+	<tr>
+	  	<td> align="center"><%= team.name %></td>
+	</tr>
+	
+	<%
+
+ 		@team_players.each do |team_player| 
+ 
+ 			if team_player.team.id == team.id
+ 
+ %>
+  <tr>
+  	<td align="center"><%= team_player.person.name %></td>
+  	<td align="center"><%= team_player.team.name %></td>
+  	<td align="center"><%= team_player.playerNumber %></td>
+  	<td align="center"><%= team_player.active %></td>
+  	
+    <td><%= link_to 'Edit', edit_team_player_path(team_player) %></td>
+    <td><%= link_to 'Destroy', team_player, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<%
+	  		end
+
+    	end
+    	
+	end 
+%>
+</table>
+
+<br />
+
+<%= link_to 'New Team player', new_team_player_path %>

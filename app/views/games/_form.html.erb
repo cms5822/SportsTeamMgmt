@@ -1,0 +1,54 @@
+<%= form_for(@game) do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  	<%= f.label :league %><br/>
+  	<%= f.select :league_id, League.all.collect {|p| [ p.name, p.id ] } %>
+  </div>
+  
+  <div class="field">
+  	<%= f.label :venue %><br/>
+  	<%= f.select :venue_id, Venue.all.collect {|p| [ p.name, p.id ] } %>
+  </div>
+  	
+  <div class="field">
+  	<h3>Home Team</h3>
+  	<%= f.label :home_id %><br/>
+  	<%= f.select :home_id , Team.all.collect {|p| [ p.name, p.id ] } %>	
+  </div>
+  
+  <div class="field">
+  	<%= f.label :away_id %><br/>
+  	<%= f.select :away_id , Team.all.collect {|p| [ p.name, p.id ] } %>	
+  </div>
+  
+  <div class="field">
+  	<%= f.label :date %><br/>
+  	<%= f.date_select :date, :start_year => Date.current.year, :end_year => 1920 %>
+  </div>
+  
+  <div class="field">
+  	<%= f.label :homeScore %><br/>
+  	<%= f.text_field :homeScore %>	
+  </div>
+
+  
+  <div class="field">
+  	<%= f.label :awayScore %><br/>
+  	<%= f.text_field :awayScore %>	
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

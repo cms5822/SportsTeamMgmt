@@ -1,0 +1,12 @@
+#!/bin/bash
+# Description: This script was designed to update our current project directory
+# with the latest online repository version.
+#
+# Author: Joshua Eklund
+# Date: 10-10-2012
+
+# Pulls the changes from the online repository
+sudo hg pull https://bitbucket.org/celdridge/sportsteammgmt
+
+# Updates the server to the lastest revision of the repository
+sudo hg update

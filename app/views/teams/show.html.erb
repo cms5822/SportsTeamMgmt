@@ -1,0 +1,49 @@
+<div class="row-fluid"><div class="span3"><h1><%= @team.name %></h1></div></div>
+<div class="row-fluid"><div class="span3"><h4>League: <%= @team.league.name %></h4></div></div>
+<!--</div><br>-->
+<div class="row-fluid">
+  <div class="span3">Venue: <%= link_to @team.venue.name , @team.venue %></div>
+</div>
+<div class="row-fluid">
+  <div class="span3">Manager: <%= link_to @team.manager.name , @team.venue %></div>
+</div>
+<div class="container-fluid">
+
+<!--Coaches-->
+<br>
+<% if @team.team_coaches.count > 0 %>
+    <div class="container-fluid">
+      <div class="row-fluid"><div class="span2"><h6>Coaching Staff:</h6></div></div>
+      <%	for coach in @team.team_coaches  %>
+          <!-- </div><div class="span3"> -->
+          <div class="row-fluid"><div class="span3"><%= coach.coachTitle %>: <%= link_to coach.person.name, coach.person %></div></div>
+      <% end %>
+    </div>
+    </div>
+<% end %>
+
+<!--%< link_to 'Edit', edit_team_path(@team) %> |
+<!--%< link_to 'Back', team_path %>
+<!--Roster-->
+<br>
+<% if @team.team_players.count > 0 %>
+    <div class="container-fluid">
+      <div class="row-fluid"><div class="span2"><h6>Roster:</h6></div></div>
+        <%	for player in @team.team_players  %>
+            <!-- -->
+            <div class="row-fluid"><div class="span3"><%= player.player_number %> <%= link_to player.person.name, player.person %></div></div>
+        <% end %>
+    </div>
+    </div>
+<% end %>
+
+
+<div class=clear>
+
+</div>
+
+<div>
+  <%= link_to 'Edit', edit_team_path(@team) %> |
+  <%= link_to 'Back', teams_path %>
+</div>
+

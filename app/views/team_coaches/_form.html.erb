@@ -1,0 +1,32 @@
+<%= form_for(@team_coach) do |f| %>
+  <% if @team_coach.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team_coach.errors.count, "error") %> prohibited this team_coach from being saved:</h2>
+
+      <ul>
+      <% @team_coach.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+  	<%= f.label "Team" %><br/>
+  	<%= f.select :team_id, Team.all.collect {|t| [ t.name, t.id] }  %>
+  </div>
+  
+  <div class="field">
+  	<%= f.label "Person" %><br/>
+  	<%= f.select :person_id , Person.all.collect {|p| [ p.name, p.id] }  %>
+  </div>
+  
+  <div class="field">
+  	<%= f.label "Coach Title" %><br/>
+  	<%= f.text_field :coachTitle %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

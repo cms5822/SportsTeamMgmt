@@ -1,0 +1,32 @@
+<h1>Sports Team Management Games</h1>
+
+<table border="1">
+  <tr>
+    <th align="center">League Name</th>
+    <th align="center">Venue Name</th>
+    <th align="center">Home Team</th>
+    <th align="center">Away Team</th>
+    <th align="center">Date Team</th>
+    <th align="center">Home Score</th>
+    <th align="center">Away Score</th>
+  </tr>
+
+<% @games.each do |game| %>
+  <tr>
+  	<td align="center"><%=link_to game.league.name, game.league %></td>
+    <td align="center"><%=link_to game.venue.name, game.venue %></td>
+    <td align="center"><%=link_to game.home.name, game.home %></td>
+    <td align="center"><%=link_to game.away.name, game.away %></td>
+    <td align="center"><%= game.date %></td>
+    <td align="center"><%= game.homeScore %></td>
+    <td align="center"><%= game.awayScore %></td>
+    <td><%= link_to 'Show', game %></td>
+    <td><%= link_to (image_tag 'edit.png', :height => '25'), edit_game_path(game) %></td>
+    <td><%= link_to (image_tag 'delete.png', :height => '25'), game, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Game', new_game_path %>
